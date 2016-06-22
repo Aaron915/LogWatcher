@@ -389,6 +389,7 @@
 				931313041D15328D007BA490 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		931313051D15328D007BA490 /* Build configuration list for PBXNativeTarget "LogWatcherTests" */ = {
 			isa = XCConfigurationList;
@@ -397,6 +398,7 @@
 				931313071D15328D007BA490 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
