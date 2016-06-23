@@ -48,7 +48,7 @@ public class LogInstance: NSObject {
      
      - parameter completion: closure to be executed with the final log.
      */
-    func endLog(withCompletion completion: (log: String) -> Void) {
+    public func endLog(withCompletion completion: (log: String) -> Void) {
         let localSelf = self
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             let fullLogs = localSelf.buildLogString()
