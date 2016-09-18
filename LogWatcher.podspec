@@ -10,6 +10,7 @@ Pod::Spec.new do |s|
 
   s.name         = "LogWatcher"
   s.version      = "0.1.2"
+  s.homepage     = "www.gydorunning.com"
   s.summary      = "Simple framework to aggegrate log statements together."
   s.license      = "MIT"
   s.author             = { "Aaron Williams" => "aaronwilliams9152@gmail.com" }
