@@ -154,6 +154,7 @@
 				TargetAttributes = {
 					931312ED1D15328D007BA490 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 					931312F71D15328D007BA490 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -331,6 +332,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -349,6 +351,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = AaronWilliams.LogWatcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
