@@ -17,7 +17,7 @@ struct LogEvent {
     let text: String
     
     /// Date the event was recorded.
-    let date: NSDate = NSDate()
+    let date: Date = Date()
     
     /**
      Returns the log representation of the date and the text.
@@ -26,8 +26,8 @@ struct LogEvent {
      
      - returns: String representation of the log.
      */
-    func log(dateFormatter: NSDateFormatter) -> String {
-        let dateText = dateFormatter.stringFromDate(date)
+    func log(_ dateFormatter: DateFormatter) -> String {
+        let dateText = dateFormatter.string(from: date)
         return dateText + "-" + text
     }
     
@@ -37,4 +37,5 @@ struct LogEvent {
     init(items: AnyObject...) {
         self.text = items.reduce("") {$0 + $1.debugDescription}
     }
+    
 }

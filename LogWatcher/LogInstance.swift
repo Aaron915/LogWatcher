@@ -7,26 +7,26 @@
 //
 
 /// Object that will keep, group and format a set of logs.
-public class LogInstance: NSObject {
+open class LogInstance: NSObject {
     
     /// Title that will appear at the top of the aggregate log.
-    private let title: String
+    fileprivate let title: String
     
     /// Start time of the log.
-    private let startTime = NSDate()
+    fileprivate let startTime = Date()
     
     /// Main formatter for dates on the logs.
-    private static let dateFormatter: NSDateFormatter = {
-        let dateFormatter = NSDateFormatter()
+    fileprivate static let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
         
-        dateFormatter.timeStyle = .LongStyle
-        dateFormatter.dateStyle = .LongStyle
+        dateFormatter.timeStyle = .long
+        dateFormatter.dateStyle = .long
         
         return dateFormatter
     }()
     
     /// Log events that have been grouped together.
-    private var logs: [LogEvent] = []
+    fileprivate var logs: [LogEvent] = []
     
     public init(title: String) {
         self.title = title
@@ -37,9 +37,9 @@ public class LogInstance: NSObject {
      
      - parameter items: Items to be included in the log.
      */
-    public func addEvent(items: AnyObject...) {
+    open func addEvent(_ items: AnyObject...) {
         debugPrint(items)
-        logs.append(LogEvent(items: items))
+        logs.append(LogEvent(items: items as AnyObject))
     }
     
     /**
@@ -48,11 +48,11 @@ public class LogInstance: NSObject {
      
      - parameter completion: closure to be executed with the final log.
      */
-    public func endLog(withCompletion completion: (log: String) -> Void) {
+    open func endLog(withCompletion completion: @escaping (_ log: String) -> Void) {
         let localSelf = self
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+        DispatchQueue.global(qos: .default).async { 
             let fullLogs = localSelf.buildLogString()
-            completion(log: fullLogs)
+            completion(fullLogs)
         }
     }
     
@@ -61,10 +61,11 @@ public class LogInstance: NSObject {
      
      - returns: Full aggregated log.
      */
-    private func buildLogString() -> String {
-        let dateString = LogInstance.dateFormatter.stringFromDate(startTime)
+    fileprivate func buildLogString() -> String {
+        let dateString = LogInstance.dateFormatter.string(from: startTime)
         let events: [String] = logs.map {$0.log(LogInstance.dateFormatter)}
         
         return events.reduce(title + "\n" + dateString + "\n") { $0 + "\n" + $1}
     }
+    
 }
