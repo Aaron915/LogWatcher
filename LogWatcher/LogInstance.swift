@@ -33,12 +33,14 @@ open class LogInstance: NSObject {
     }
     
     /**
-     Adds an event to the list of logs/
+     Adds an event to the list of logs.
      
      - parameter items: Items to be included in the log.
      */
     open func addEvent(_ items: AnyObject...) {
-        debugPrint(items)
+        #if DEBUG
+            debugPrint(items)
+        #endif
         logs.append(LogEvent(items: items as AnyObject))
     }
     
